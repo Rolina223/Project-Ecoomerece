@@ -8,11 +8,11 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // ── Middleware: allow JSON data & serve frontend files ──
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // serves index.html, style.css, app.js
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ── Our Product Database (stored in a JSON file) ──
 const PRODUCTS_FILE = path.join(__dirname, 'data', 'products.json');
@@ -22,16 +22,20 @@ const ORDERS_FILE   = path.join(__dirname, 'data', 'orders.json');
 if (!fs.existsSync(path.join(__dirname, 'data'))) {
   fs.mkdirSync(path.join(__dirname, 'data'));
 }
+
+if (!fs.existsSync(PRODUCTS_FILE)) {
+  fs.writeFileSync(PRODUCTS_FILE, JSON.stringify([], null, 2));
+}
+
 if (!fs.existsSync(ORDERS_FILE)) {
   fs.writeFileSync(ORDERS_FILE, JSON.stringify([], null, 2));
 }
 
 // ──────────────────────────────────────────────
 //  API ROUTES
-//  These are "endpoints" the frontend calls
 // ──────────────────────────────────────────────
 
-// GET /api/products → send all products to frontend
+// GET all products
 app.get('/api/products', (req, res) => {
   try {
     const data = fs.readFileSync(PRODUCTS_FILE, 'utf-8');
@@ -42,25 +46,31 @@ app.get('/api/products', (req, res) => {
   }
 });
 
-// GET /api/products/:id → get one product by id
+// GET product by ID
 app.get('/api/products/:id', (req, res) => {
   const data = fs.readFileSync(PRODUCTS_FILE, 'utf-8');
   const products = JSON.parse(data);
+
   const product = products.find(p => p.id === parseInt(req.params.id));
 
-  if (!product) return res.status(404).json({ error: 'Product not found' });
+  if (!product) {
+    return res.status(404).json({ error: 'Product not found' });
+  }
+
   res.json(product);
 });
 
-// POST /api/order → receive an order from frontend
+// POST order
 app.post('/api/order', (req, res) => {
   const { items, total } = req.body;
 
   if (!items || items.length === 0) {
-    return res.status(400).json({ success: false, error: 'Cart is empty' });
+    return res.status(400).json({
+      success: false,
+      error: 'Cart is empty'
+    });
   }
 
-  // Create a new order object
   const newOrder = {
     id: Date.now(),
     items,
@@ -69,30 +79,39 @@ app.post('/api/order', (req, res) => {
     createdAt: new Date().toISOString()
   };
 
-  // Save to orders.json file
   const existing = JSON.parse(fs.readFileSync(ORDERS_FILE, 'utf-8'));
+
   existing.push(newOrder);
-  fs.writeFileSync(ORDERS_FILE, JSON.stringify(existing, null, 2));
+
+  fs.writeFileSync(
+    ORDERS_FILE,
+    JSON.stringify(existing, null, 2)
+  );
 
   console.log(`\n✅ New Order #${newOrder.id} received!`);
-  console.log(`   Items: ${items.map(i => i.nameEn).join(', ')}`);
-  console.log(`   Total: ৳${total}\n`);
+  console.log(`Items: ${items.map(i => i.nameEn).join(', ')}`);
+  console.log(`Total: ৳${total}\n`);
 
-  res.json({ success: true, orderId: newOrder.id });
+  res.json({
+    success: true,
+    orderId: newOrder.id
+  });
 });
 
-// GET /api/orders → see all orders (admin use)
+// GET all orders (admin)
 app.get('/api/orders', (req, res) => {
-  const orders = JSON.parse(fs.readFileSync(ORDERS_FILE, 'utf-8'));
+  const orders = JSON.parse(
+    fs.readFileSync(ORDERS_FILE, 'utf-8')
+  );
+
   res.json(orders);
 });
 
 // ── Start the server ──
 app.listen(PORT, () => {
   console.log('');
-  console.log('  🛒 BAJAR | বাজার — Server Started!');
-  console.log('  ─────────────────────────────────');
-  console.log(`  Open your browser and go to:`);
-  console.log(`  👉 http://localhost:${PORT}`);
+  console.log('🛒 BAJAR | বাজার — Server Started!');
+  console.log('─────────────────────────────────');
+  console.log(`Server running on port ${PORT}`);
   console.log('');
 });
