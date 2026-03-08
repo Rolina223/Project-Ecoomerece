@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nameEn": "Royal Darjeeling Tea",
+    "nameBn": "রয়েল দার্জিলিং চা",
+    "price": 850,
+    "category": "BEVERAGES • পানীয়",
+    "emoji": "🍵",
+    "badge": "BESTSELLER"
+  },
+  {
+    "id": 2,
+    "nameEn": "Muslin Silk Saree",
+    "nameBn": "মসলিন সিল্ক শাড়ি",
+    "price": 4500,
+    "category": "FASHION • ফ্যাশন",
+    "emoji": "🥻",
+    "badge": "NEW"
+  },
+  {
+    "id": 3,
+    "nameEn": "Handcrafted Brass Vase",
+    "nameBn": "হাতে তৈরি পিতলের ফুলদানি",
+    "price": 1200,
+    "category": "HOME DECOR • গৃহসজ্জা",
+    "emoji": "🏺",
+    "badge": null
+  },
+  {
+    "id": 4,
+    "nameEn": "Premium Mustard Oil",
+    "nameBn": "প্রিমিয়াম সরিষার তেল",
+    "price": 320,
+    "category": "GROCERY • মুদিখানা",
+    "emoji": "🫙",
+    "badge": "ORGANIC"
+  },
+  {
+    "id": 5,
+    "nameEn": "Bamboo Leather Wallet",
+    "nameBn": "বাঁশের চামড়ার মানিব্যাগ",
+    "price": 950,
+    "category": "ACCESSORIES • আনুষাঙ্গিক",
+    "emoji": "👜",
+    "badge": "LIMITED"
+  },
+  {
+    "id": 6,
+    "nameEn": "Nolen Gur Sweets",
+    "nameBn": "নলেন গুড়ের মিষ্টি",
+    "price": 480,
+    "category": "SWEETS • মিষ্টি",
+    "emoji": "🍯",
+    "badge": "SEASONAL"
+  },
+  {
+    "id": 7,
+    "nameEn": "Jamdani Cotton Kurta",
+    "nameBn": "জামদানি কটন কুর্তা",
+    "price": 2200,
+    "category": "FASHION • ফ্যাশন",
+    "emoji": "👘",
+    "badge": null
+  },
+  {
+    "id": 8,
+    "nameEn": "Bengal Clay Pottery Set",
+    "nameBn": "বাংলার মাটির পাত্র সেট",
+    "price": 1600,
+    "category": "HOME DECOR • গৃহসজ্জা",
+    "emoji": "🏛️",
+    "badge": "HANDMADE"
+  }
+]

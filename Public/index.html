@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>বাজার | Bajar — Premium Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Hind+Siliguri:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <span class="logo-en">BAJAR</span>
+      <span class="logo-bn">বাজার</span>
+    </div>
+    <div class="nav-links">
+      <a href="#products">Products / পণ্য</a>
+      <a href="#about">About / আমাদের</a>
+    </div>
+    <div class="nav-right">
+      <button class="cart-btn" onclick="toggleCart()">
+        🛒 Cart <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-sub">নতুন সংগ্রহ • New Collection</p>
+      <h1>Crafted for<br/><em>Those Who Know</em></h1>
+      <p class="hero-desc">Premium quality products, curated for you.<br/>সেরা মানের পণ্য, আপনার জন্য বাছাই করা।</p>
+      <a href="#products" class="hero-btn">Shop Now / কেনাকাটা করুন</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-circle"></div>
+      <div class="hero-badge">NEW<br/>২০২৫</div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>FREE DELIVERY • বিনামূল্যে ডেলিভারি &nbsp;•&nbsp; PREMIUM QUALITY • সেরা মান &nbsp;•&nbsp; EASY RETURNS • সহজ রিটার্ন &nbsp;•&nbsp; 24/7 SUPPORT • সার্বক্ষণিক সহায়তা &nbsp;•&nbsp;</span>
+      <span>FREE DELIVERY • বিনামূল্যে ডেলিভারি &nbsp;•&nbsp; PREMIUM QUALITY • সেরা মান &nbsp;•&nbsp; EASY RETURNS • সহজ রিটার্ন &nbsp;•&nbsp; 24/7 SUPPORT • সার্বক্ষণিক সহায়তা &nbsp;•&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="products-section" id="products">
+    <div class="section-header">
+      <h2>Our Products <span class="bn">আমাদের পণ্য</span></h2>
+      <p>Handpicked, premium, and made to last. / বাছাই করা, প্রিমিয়াম এবং টেকসই।</p>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- Loaded by JS -->
+      <div class="loading-spinner">Loading products... / পণ্য লোড হচ্ছে...</div>
+    </div>
+  </section>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart / আপনার কার্ট</h3>
+      <button onclick="toggleCart()" class="close-cart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-cart">Your cart is empty.<br/>আপনার কার্ট খালি।</p>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">Total: <strong id="cartTotal">৳0</strong></div>
+      <button class="checkout-btn" onclick="checkout()">Checkout / চেকআউট</button>
+    </div>
+  </div>
+
+  <!-- ORDER SUCCESS MODAL -->
+  <div class="modal-overlay" id="modalOverlay" style="display:none">
+    <div class="modal">
+      <div class="modal-icon">✓</div>
+      <h3>Order Placed! / অর্ডার সম্পন্ন!</h3>
+      <p>Thank you for your order.<br/>আপনার অর্ডারের জন্য ধন্যবাদ।</p>
+      <button onclick="closeModal()" class="modal-btn">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-content">
+      <h2>Why Bajar? <span class="bn">কেন বাজার?</span></h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <span>🌿</span>
+          <h4>Pure Quality / বিশুদ্ধ মান</h4>
+          <p>Every product is hand-selected for quality. প্রতিটি পণ্য মান যাচাই করে বাছাই।</p>
+        </div>
+        <div class="about-card">
+          <span>🚚</span>
+          <h4>Fast Delivery / দ্রুত ডেলিভারি</h4>
+          <p>Delivered to your door in 2–3 days. ২–৩ দিনে আপনার দরজায়।</p>
+        </div>
+        <div class="about-card">
+          <span>🔒</span>
+          <h4>Secure Payment / নিরাপদ পেমেন্ট</h4>
+          <p>100% secure checkout process. ১০০% নিরাপদ পেমেন্ট প্রক্রিয়া।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">BAJAR <span class="bn">বাজার</span></div>
+    <p>© 2025 Bajar. Premium Store. All rights reserved.</p>
+    <p class="bn">সর্বস্বত্ব সংরক্ষিত।</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
